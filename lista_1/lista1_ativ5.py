@@ -1,20 +1,23 @@
 #Atividade 5 da lista 1
 
-#Variáveis de input e vazias (de suporte)
-frase_01 = input()
-frase_02 = input()
 direcao = ""
+direcao2 = ""
 retorno_01 = ""
 retorno_02 = ""
 retorno_direcao = ""
 retorno_direcao2 = ""
-
-#Condição para caso o usuário ponha mensagem de curva
 curva = "Tem uma curva vindo aí, me ajuda!"
+
+#Variáveis com input e condição se a mensagem for pedindo direção
+frase_01 = input()
 if frase_01 == curva:
     direcao = input()
-elif frase_02 == curva:
-    direcao = input()
+
+frase_02 = input()
+if frase_02 == curva:
+    direcao2 = input()
+
+#Condição para caso o usuário ponha mensagem de curva
 
 #Variáveis que armazenam as frases (para simplificar mais as condicionais)
 pisa = "PISA FUNDO"
@@ -23,8 +26,8 @@ freia = "FREIA AGORA E ME DIZ PARA QUE LADO É"
 entao = "ENTÃO VIRA LOGO!"
 virar = "É SÓ VIRAR!"
 ajuda = "Assim não tem como te ajudar, amiga"
-amiga = "Amiga, calma! Tem um pit stop na tua frente..."
-eita = "Eita, não entendi nada..."
+amiga = "Amiga, calma! Tem um pit stop na tua frente…"
+eita = "Eita, não entendi nada…"
 lets = "LET'S RIDE!"
 
 
@@ -53,9 +56,9 @@ elif frase_02 == "Esse cara não sai da minha frente...":
     retorno_02 = ultrapassa
 elif frase_02 == curva:
     retorno_02 = freia
-    if direcao == "DIREITA":
+    if direcao2 == "DIREITA":
         retorno_direcao2 = entao
-    elif direcao == "ESQUERDA":
+    elif direcao2 == "ESQUERDA":
         retorno_direcao2 = virar
     else:
         retorno_direcao2 = ajuda
