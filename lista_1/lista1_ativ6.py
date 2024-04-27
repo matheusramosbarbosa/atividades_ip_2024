@@ -1,3 +1,6 @@
+#Atividade 6 da Lista 1
+
+#Inputs exigidos pelo desafio
 construtor_1 = input()
 posicao_1 = int(input())
 salario_1 = int(input()) #Em milhões
@@ -6,13 +9,13 @@ construtor_2 = input()
 posicao_2 = int(input())
 salario_2 = int(input()) #Em milhões
 
+#Variáveis de apoio
 p_final = 0
 p_final_2 = 0
 
-#--- condições das pontuações
+#------------ Condições das Pontuações
 
 #Construtor 1
-
 if construtor_1 == "Red Bull":
     p_final += 3
 elif construtor_1 == "McLaren":
@@ -30,7 +33,6 @@ if posicao_1 < 3:
 
 
 #Construtor 2
-
 if construtor_2 == "Red Bull":
     p_final_2 +=3
 elif construtor_2 == "McLaren":
@@ -48,7 +50,6 @@ if posicao_2 < 3:
 
 
 #Condições de aceitação da proposta
-
 if construtor_1 == "Red Bull":
     print(f'SMOOOOTH OPERATOOR! Sainz vai correr pela {construtor_1}, que pontuou {p_final}.')
 elif construtor_2 == "Red Bull":
@@ -62,7 +63,9 @@ elif construtor_1 == "Red Bull" and construtor_2 == "Red Bull":
         print(f'As duas são ótimas opções! Vamos, Sainz!!')
 elif (posicao_1 == 3 and posicao_2 == 3) or (construtor_1 == "Ferrari" and construtor_2 == "Ferrari"):
     print("Depois de tantas temporadas, o Sainz vai descançar em 2025.")
-elif (posicao_1 == 3 and posicao_2 == 3) and (construtor_1 == "Ferrari" or construtor_2 == "Ferrari"):
+elif posicao_1 == 3 and construtor_2 == "Ferrari":
+    print("Depois de tantas temporadas, o Sainz vai descançar em 2025.")
+elif posicao_2 == 3 and construtor_1 == "Ferrari":
     print("Depois de tantas temporadas, o Sainz vai descançar em 2025.")
 elif (posicao_1 < 3 and posicao_2 == 3) and construtor_1 != "Ferrari":
     print(f'SMOOOOTH OPERATOOR! Sainz vai correr pela {construtor_1}, que pontuou {p_final}.')
