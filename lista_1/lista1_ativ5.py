@@ -1,5 +1,6 @@
 #Atividade 5 da lista 1
 
+#Variáveis vazias (de suporte)
 direcao = ""
 direcao2 = ""
 retorno_01 = ""
