@@ -1,21 +1,6 @@
-#Atividade 10 da Lista 1 
+# #Atividade 10 da Lista 1 | Abaixo encontram-se os inputs exigidos pelo desafio e, abaixo dessa linha, as condições para chegar ao resultado da operação exigida pelo usuário.
+x, operador, y = int(input()), input(), int(input())
+print(f"{x + y}") if operador == "+" else print(f"{x - y}") if operador == "-" else print(f"{x * y}") if operador == "*" else print(f"{x // y}") if operador == "/" and y != 0 else print("Erro: operador não reconhecido.")
 
-x = int(input())
-operador = input()
-y = int(input())
-z = 0
 
-if operador == "+":
-    z = x + y
-    print(f"{z}")
-elif operador == "-":
-    z = x - y
-    print(f"{z}")
-elif operador == "*":
-    z = x * y
-    print(f"{z}")
-elif operador == "/" and y != 0:
-    z = x // y
-    print(f"{z}")
-else:
-    print("Erro: operador não reconhecido.")
+#O desafio define um limite de 3 linhas!
