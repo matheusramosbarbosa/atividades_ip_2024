@@ -9,10 +9,11 @@ while ((numero_inteiro > 0) and (numero_inteiro < 99)):
         numero_inteiro += 1
         variavel_apoio += f"{numero_inteiro}, "
     elif (numero_inteiro % 2 == 1) and (numero_inteiro <= 95):
-        numero_inteiro += 2
         variavel_apoio += f"{numero_inteiro}, "
+        numero_inteiro += 2
     elif (numero_inteiro == 97):
         numero_inteiro += 2
         variavel_apoio += f"{numero_inteiro}."
+        numero_inteiro += 2
 else:
     print(variavel_apoio)
