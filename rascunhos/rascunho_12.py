@@ -25,5 +25,4 @@ resultado = 0
 for i in range (1, distancia, tam_passo):
     resultado += 1
 else:
-    print(f'Cada {nome} precisará dar {resultado} passos.')
-    
+    print(f'Cada {nome} precisará dar {resultado} passos para chegar ao destino.')
