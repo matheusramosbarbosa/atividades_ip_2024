@@ -3,45 +3,51 @@
 from decimal import Decimal, getcontext
 getcontext().prec = 15
 
+# Atividade 6 da Lista 2
+
 # Inputs exigidos pelo desafio + variáveis de apoio
 quantidade_veiculos = int(input())
 acidente_info = input()
-distancia_total = float(input())
+distancia_total = Decimal(float(input()))
 codigo_serializacao = input()
 codigo_final = ""
 
 # Cálculos do primeiro trajeto
 trajeto_1 = "A"
 distancia_jato = Decimal(distancia_total) * Decimal(0.8)
-tempo_jato = Decimal((distancia_jato * 60)) / Decimal(1089)
+tempo_jato = Decimal((Decimal(distancia_jato) * Decimal(60))) / Decimal(1089)
 distancia_carro = Decimal(distancia_total) * Decimal(0.2)
-tempo_carro = Decimal((distancia_carro * 60)) / Decimal(60)
+tempo_carro = Decimal((Decimal(distancia_carro) * Decimal(60))) / Decimal(60)
 tempo_total_1 = Decimal(tempo_carro) + Decimal(tempo_jato) #sem atrasos ainda
 
 # Cálculos do segundo trajeto
 trajeto_2 = "B"
 distancia_onibus = Decimal(distancia_total)
-tempo_onibus = Decimal((distancia_onibus * 60)) / Decimal(40)
+tempo_onibus = Decimal((Decimal(distancia_onibus) * Decimal(60))) / Decimal(40)
 tempo_total_2 = Decimal(tempo_onibus) #sem atrasos ainda
 
 # Cálculos do terceiro trajeto
 trajeto_3 = "C"
 distancia_helicoptero = Decimal(distancia_total)
-tempo_helicoptero = Decimal(((distancia_helicoptero * 10)) / Decimal(60)) * Decimal(5)
+tempo_helicoptero = Decimal(((Decimal(distancia_helicoptero) * Decimal(10)) / Decimal(60))) * Decimal(5)
 tempo_total_3 = Decimal(tempo_helicoptero)
 
 # Tempo de atraso
-for i in range (quantidade_veiculos):
-    tempo_total_1 += Decimal(0.36)
-    tempo_total_2 += Decimal(0.36)
+# for i in range (quantidade_veiculos):
+#     tempo_total_1 += 0.60 # 36 segundos em decimal
+#     tempo_total_2 += 0.60 # 36 segundos em decimal
+
+if quantidade_veiculos > 0:
+    tempo_total_1 += quantidade_veiculos * Decimal(0.6)
+    tempo_total_2 += quantidade_veiculos * Decimal(0.6)
 
 if acidente_info == "sim":
-    tempo_total_1 += Decimal(20)
-    tempo_total_2 += Decimal(20)
+    tempo_total_1 += Decimal(20.0)
+    tempo_total_2 += Decimal(20.0)
 
-tempo_trajeto_1 = Decimal(int(tempo_total_1 * 10) / 10)
-tempo_trajeto_2 = Decimal(int(tempo_total_2 * 10) / 10)
-tempo_trajeto_3 = Decimal(int(tempo_total_3 * 10) / 10)
+tempo_trajeto_1 = int(Decimal(tempo_total_1) * 10) / 10
+tempo_trajeto_2 = int(Decimal(tempo_total_2) * 10) / 10
+tempo_trajeto_3 = int(Decimal(tempo_total_3) * 10) / 10
 
 for i in (codigo_serializacao):
     i = int(i)

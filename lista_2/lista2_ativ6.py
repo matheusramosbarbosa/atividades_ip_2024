@@ -28,9 +28,13 @@ tempo_helicoptero = ((distancia_helicoptero * 10) / 60) * 5
 tempo_total_3 = tempo_helicoptero
 
 # Tempo de atraso
-for i in range (quantidade_veiculos):
-    tempo_total_1 += 0.36
-    tempo_total_2 += 0.36
+# for i in range (quantidade_veiculos):
+#     tempo_total_1 += 0.60 # 36 segundos em decimal
+#     tempo_total_2 += 0.60 # 36 segundos em decimal
+
+if quantidade_veiculos > 0:
+    tempo_total_1 += quantidade_veiculos * 0.6
+    tempo_total_2 += quantidade_veiculos * 0.6
 
 if acidente_info == "sim":
     tempo_total_1 += 20.0
