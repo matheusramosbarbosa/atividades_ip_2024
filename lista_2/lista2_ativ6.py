@@ -10,25 +10,21 @@ codigo_final = ""
 # Cálculos do primeiro trajeto
 trajeto_1 = "A"
 distancia_jato = distancia_total * 0.8
-tempo_jato_temp = (distancia_jato * 60) / 1089
-tempo_jato = tempo_jato_temp
+tempo_jato = (distancia_jato * 60) / 1089
 distancia_carro = distancia_total * 0.2
-tempo_carro_temp = (distancia_carro * 60) / 60
-tempo_carro = tempo_carro_temp
+tempo_carro = (distancia_carro * 60) / 60
 tempo_total_1 = tempo_carro + tempo_jato #sem atrasos ainda
 
 # Cálculos do segundo trajeto
 trajeto_2 = "B"
 distancia_onibus = distancia_total
-tempo_onibus_temp = (distancia_onibus * 60) / 40
-tempo_onibus = tempo_onibus_temp
+tempo_onibus = (distancia_onibus * 60) / 40
 tempo_total_2 = tempo_onibus #sem atrasos ainda
 
 # Cálculos do terceiro trajeto
 trajeto_3 = "C"
 distancia_helicoptero = distancia_total
-tempo_helicoptero_temp = ((distancia_helicoptero * 10) / 60) * 5
-tempo_helicoptero = tempo_helicoptero_temp
+tempo_helicoptero = ((distancia_helicoptero * 10) / 60) * 5
 tempo_total_3 = tempo_helicoptero
 
 # Tempo de atraso
@@ -52,8 +48,8 @@ for i in (codigo_serializacao):
         codigo_final += str(i) + "78"
 
 print("Análise das opções de transporte até o show!")
-print(f"Opção {trajeto_1} - Você chegará ao show em {tempo_trajeto_1} minutos")
-print(f"Opção {trajeto_2} - Você chegará ao show em {tempo_trajeto_2} minutos")
-print(f"Opção {trajeto_3} - Você chegará ao show em {tempo_trajeto_3} minutos")
+print(f"Opção {trajeto_1} - Você chegará ao show em {tempo_trajeto_1:.1f} minutos")
+print(f"Opção {trajeto_2} - Você chegará ao show em {tempo_trajeto_2:.1f} minutos")
+print(f"Opção {trajeto_3} - Você chegará ao show em {tempo_trajeto_3:.1f} minutos")
 print(f"---")
 print(f"Senha de serialização transformada: {codigo_final}, guarde com segurança!")

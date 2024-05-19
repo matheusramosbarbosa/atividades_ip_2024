@@ -1,6 +1,5 @@
 # Atividade 6 da Lista 2
 
-# Importação de biblioteca
 from decimal import Decimal, getcontext
 getcontext().prec = 15
 
@@ -11,30 +10,25 @@ distancia_total = float(input())
 codigo_serializacao = input()
 codigo_final = ""
 
-
 # Cálculos do primeiro trajeto
 trajeto_1 = "A"
-distancia_jato = distancia_total * Decimal(0.8)
-tempo_jato_temp = (distancia_jato * Decimal(60)) / Decimal(1089)
-tempo_jato = tempo_jato_temp
-distancia_carro = distancia_total * Decimal(0.2)
-tempo_carro_temp = (distancia_carro * Decimal(60)) / Decimal(60)
-tempo_carro = tempo_carro_temp
-tempo_total_1 = tempo_carro + tempo_jato #sem atrasos ainda
+distancia_jato = Decimal(distancia_total) * Decimal(0.8)
+tempo_jato = Decimal((distancia_jato * 60)) / Decimal(1089)
+distancia_carro = Decimal(distancia_total) * Decimal(0.2)
+tempo_carro = Decimal((distancia_carro * 60)) / Decimal(60)
+tempo_total_1 = Decimal(tempo_carro) + Decimal(tempo_jato) #sem atrasos ainda
 
 # Cálculos do segundo trajeto
 trajeto_2 = "B"
-distancia_onibus = distancia_total
-tempo_onibus_temp = (distancia_onibus * Decimal(60)) / Decimal(40)
-tempo_onibus = tempo_onibus_temp
-tempo_total_2 = tempo_onibus #sem atrasos ainda
+distancia_onibus = Decimal(distancia_total)
+tempo_onibus = Decimal((distancia_onibus * 60)) / Decimal(40)
+tempo_total_2 = Decimal(tempo_onibus) #sem atrasos ainda
 
 # Cálculos do terceiro trajeto
 trajeto_3 = "C"
-distancia_helicoptero = distancia_total
-tempo_helicoptero_temp = ((distancia_helicoptero * Decimal(10)) / Decimal(60)) * Decimal(5)
-tempo_helicoptero = tempo_helicoptero_temp
-tempo_total_3 = tempo_helicoptero
+distancia_helicoptero = Decimal(distancia_total)
+tempo_helicoptero = Decimal(((distancia_helicoptero * 10)) / Decimal(60)) * Decimal(5)
+tempo_total_3 = Decimal(tempo_helicoptero)
 
 # Tempo de atraso
 for i in range (quantidade_veiculos):
@@ -42,12 +36,12 @@ for i in range (quantidade_veiculos):
     tempo_total_2 += Decimal(0.36)
 
 if acidente_info == "sim":
-    tempo_total_1 += Decimal(20.0)
-    tempo_total_2 += Decimal(20.0)
+    tempo_total_1 += Decimal(20)
+    tempo_total_2 += Decimal(20)
 
-tempo_trajeto_1 = Decimal(tempo_total_1 * Decimal(10)) / Decimal(10)
-tempo_trajeto_2 = Decimal(tempo_total_2 * Decimal(10)) / Decimal(10)
-tempo_trajeto_3 = Decimal(tempo_total_3 * Decimal(10)) / Decimal(10)
+tempo_trajeto_1 = Decimal(int(tempo_total_1 * 10) / 10)
+tempo_trajeto_2 = Decimal(int(tempo_total_2 * 10) / 10)
+tempo_trajeto_3 = Decimal(int(tempo_total_3 * 10) / 10)
 
 for i in (codigo_serializacao):
     i = int(i)
