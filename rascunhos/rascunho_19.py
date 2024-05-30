@@ -5,18 +5,15 @@ pontos_taylor = 0
 pontos_kanye = 0
 pontos_desordem_kanye = 0
 pontos_desordem_taylor = 0
+descontentamento = True
 pontos_rodada_kanye = 0
 pontos_rodada_taylor = 0
-vencedor_encontrado = False
 
-for i in range(num_rodadas):
-     if vencedor_encontrado:
-          continue
 
 for i in range(num_rodadas):
     print(f"{i + 1}° RODADA:")
     if pontos_desordem_kanye < 5 and pontos_desordem_taylor < 5:
-        musica_1 = input()
+        musica = input()
         pontos_kanye = 0
         for a in range(3):
             avaliacao = input()
@@ -27,18 +24,18 @@ for i in range(num_rodadas):
             elif avaliacao == "ruim":
                 pontos_kanye -= 3
             elif avaliacao == "péssima":
-                descontentamento = True
                 while descontentamento:
                     frase_descontentamento = input()
                     if frase_descontentamento == "ORDEM":
                         descontentamento = False
                     elif frase_descontentamento != "":
                         pontos_desordem_kanye += 1
+                descontentamento = True
             
         if pontos_desordem_kanye < 5:
-            musica_2 = input()
+            musica = input()
             pontos_taylor = 0
-            for b in range(3):
+            for a in range(3):
                 avaliacao = input()
                 if avaliacao == "boa":
                     pontos_taylor += 2
@@ -47,13 +44,13 @@ for i in range(num_rodadas):
                 elif avaliacao == "ruim":
                     pontos_taylor-= 3
                 elif avaliacao == "péssima":
-                    descontentamento = True
                     while descontentamento:
                         frase_descontentamento = input()
                         if frase_descontentamento == "ORDEM":
                             descontentamento = False
                         elif frase_descontentamento != "":
-                            pontos_desordem_taylor += 1
+                            pontos_desordem_kanye += 1
+                    descontentamento = True
     if pontos_kanye > pontos_taylor and pontos_desordem_kanye < 5 and pontos_desordem_taylor < 5:
         print(f"O(a) vencedor(a) da {i + 1}° rodada foi Kanye West")
         pontos_rodada_kanye += 1

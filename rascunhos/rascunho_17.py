@@ -1,17 +1,25 @@
-musica = input()
-forca = ['_' for a in musica]
+qtd_musicas = int(input())
 
-while '_' in forca:
-    chute = input()
+for i in range(qtd_musicas):
+    musica = input()
+    forca = ""
+    for a in musica:
+        if a == ' ':
+            forca += ' '
+        else:
+            forca += '_'
 
-    for x in forca:
-        print(x, end="")
-    print()
+    while '_' in forca:
+        chute = input()
 
-    for i in range(len(musica)):
-        if musica[i] == chute:
-            forca[i] = chute
+        nova_forca = ""
+        for i in range(len(musica)):
+            if musica[i] == chute:
+                nova_forca += chute
+            else:
+                nova_forca += forca[i]
+        forca = nova_forca
 
-    for x in forca:
-        print(x, end="")
-    print()
+        for x in forca:
+            print(x, end="")
+        print()

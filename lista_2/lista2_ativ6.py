@@ -27,23 +27,22 @@ distancia_helicoptero = distancia_total
 tempo_helicoptero = ((distancia_helicoptero * 10) / 60) * 5
 tempo_total_3 = tempo_helicoptero
 
-# Tempo de atraso
-# for i in range (quantidade_veiculos):
-#     tempo_total_1 += 0.60 # 36 segundos em decimal
-#     tempo_total_2 += 0.60 # 36 segundos em decimal
-
+# Condição para definir adição de atraso no trânsito levando em consideração a quantidade de carros
 if quantidade_veiculos > 0:
     tempo_total_1 += quantidade_veiculos * 0.6
     tempo_total_2 += quantidade_veiculos * 0.6
 
+# Condição para definir adição de atraso no trânsito levando em consideração a existência de algum acidente
 if acidente_info == "sim":
     tempo_total_1 += 20.0
     tempo_total_2 += 20.0
 
+# Cálculo para reduzir números a uma casa decimal
 tempo_trajeto_1 = int(tempo_total_1 * 10) / 10
 tempo_trajeto_2 = int(tempo_total_2 * 10) / 10
 tempo_trajeto_3 = int(tempo_total_3 * 10) / 10
 
+# Loop para criação do código de serialização
 for i in (codigo_serializacao):
     i = int(i)
     if i % 2 == 0:
@@ -51,6 +50,7 @@ for i in (codigo_serializacao):
     else:
         codigo_final += str(i) + "78"
 
+# Outputs finais
 print("Análise das opções de transporte até o show!")
 print(f"Opção {trajeto_1} - Você chegará ao show em {tempo_trajeto_1:.1f} minutos")
 print(f"Opção {trajeto_2} - Você chegará ao show em {tempo_trajeto_2:.1f} minutos")
