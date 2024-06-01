@@ -12,4 +12,4 @@ while(num<99):
   print(f'{num},', end=' ')
   num += 2
 else:
-  print (f'{num}.')
+  print(f'{num}.')
