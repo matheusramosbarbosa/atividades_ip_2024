@@ -35,8 +35,8 @@ while investigacao:
         if 0 <= indice_atual < len(lista) and 0 <= indice_novo < len(lista):
             lista[indice_atual], lista[indice_novo] = lista[indice_novo], lista[indice_atual]
     elif entrada == estranho:
-        nome1 = input().strip()
-        nome2 = input().strip()
+        nome1 = input()
+        nome2 = input()
         if nome1 in lista and nome2 in lista:
             indice1 = lista.index(nome1)
             indice2 = lista.index(nome2)
