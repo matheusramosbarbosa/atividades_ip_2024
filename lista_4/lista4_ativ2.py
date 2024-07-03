@@ -1,35 +1,41 @@
 # Atividade 2 da Lista 4
+
+# Função para imprimir o resultado da operação
 def imprimir(a, b, c):
     print(f'Ao dar esse item eu esperava uma operação de {a} e com isso o status do meu Pokemon de {b} foi para {c}')
 
+# Função de adição
 def adicao(a, b):
     c = 0
     c = a + b
     return c
 
+# Função de subtração
 def subtracao(a, b):
     c = 0
     c = a - b
     return c
 
+# Função de multiplicação
 def multiplicacao(a, b):
     c = 0
     c = a * b
     return c
 
+# Função de divisão
 def divisao(a, b):
     c = 0
     c = a // b
     return c
 
+# Função de potenciação
 def potenciacao(a, b):
     c = 0
     c = a**b
     return c
 
+# Função de radiciação (raiz), usando o método de Newton-Raphson
 def radiciacao(a, b, c=0.000000001):
-    # Método de Newton-Rapshon
-    # Valor inicial do método:
     diferenca = 0
     aproximacao = 0
     melhor_aproximacao = 0
@@ -47,9 +53,11 @@ def radiciacao(a, b, c=0.000000001):
         return parte_inteira + 1
     else:
         return parte_inteira
-    
+
+# Variável para controlar o loop
 operacao = True
 
+# Output exigido pelo desafio
 while operacao:
     quantidade_operacoes = int(input())
     if quantidade_operacoes == -1:

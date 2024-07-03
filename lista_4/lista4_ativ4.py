@@ -1,13 +1,11 @@
 # Atividade 4 da Lista 4
 
-# Olá, meu nome é {participante_n}, meu pokémon preferido é {favorito_n} e tenho {qtd_pokebolas_n} pokébolas
-
-# Um {pokémon} selvagem apareceu! Foram {tempo} segundos e {passos} passos desde o último encontro de {participante}
-
+# Listas com o alfabeto e seus valores ASCII
 alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 valor_ascii = [97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122]
 cifra_traduzida = []
 
+# Função para analisar a apresentação dos jogadores
 def analise_apresentacao(texto):
     texto = texto.replace("Olá, meu nome é ", "")
     texto = texto.replace(", meu pokémon preferido é ", " - ")
@@ -16,6 +14,7 @@ def analise_apresentacao(texto):
     a = texto
     return a
 
+# Função para analisar a aparição de pokémon selvagem
 def analise_selvagem(texto):
     texto = texto.replace("Um ", "")
     texto = texto.replace(" selvagem apareceu! Foram ", " - ")
@@ -24,6 +23,7 @@ def analise_selvagem(texto):
     a = texto
     return a
 
+# Função para converter uma letra em uma cifra
 def conversao_cifra(a):
     cifra_traduzida = []
     for i in range(a, a + 26, 1):
@@ -32,6 +32,7 @@ def conversao_cifra(a):
     b = cifra_traduzida
     return b
 
+# Função para descobrir o ID do jogador
 def descobrir_id_jogador(a, b):
     for i in a:
         id_jogador = 0
@@ -42,6 +43,7 @@ def descobrir_id_jogador(a, b):
     c = b
     return c
 
+# Função para descobrir o ID do pokémon
 def descobrir_id_pokemon(a, b):
     id_pokemon = 0
     for j in a:
@@ -51,12 +53,15 @@ def descobrir_id_pokemon(a, b):
     c = str(id_final)
     return c 
 
+# Listas para armazenar dados dos jogadores
 lista_nomes = []
 lista_fav = []
 lista_qtd = []
 
+# Número de participantes
 n_participantes = int(input())
 
+# Processa as informações dos participantes
 for i in range(n_participantes):
     apresentacao = input()
     frase = analise_apresentacao(apresentacao)
@@ -65,18 +70,17 @@ for i in range(n_participantes):
     lista_fav.append(favs)
     lista_qtd.append(int(qtds))
 
+# Lista para armazenar os pokémons capturados
 lista_pokemon = []
 for i in range(n_participantes):
     lista_pokemon.append([])
 
-# Conversão de nome em cifra
-nomes_lower = []
-for i in range (len(lista_nomes)):
-    nomes_lower.append(lista_nomes[i].lower())
+# Converte os nomes para minúsculas
+nomes_lower = [nome.lower() for nome in lista_nomes]
 
+# Codifica os nomes usando a cifra
 lista_codificados = []
 cifra_traduzida = conversao_cifra(3)
-
 for a in nomes_lower:
     nome_codificado = ''
     for i in a:
@@ -84,12 +88,12 @@ for a in nomes_lower:
         nome_codificado += cifra_traduzida[index_aux]
     lista_codificados.append(nome_codificado)
 
-# Descobrir ID do Jogador
+# Descobre o ID dos jogadores
 lista_aux = []
 lista_id_jogador = descobrir_id_jogador(lista_codificados, lista_aux)
 
+# Loop para processar aparições de pokémons selvagens
 campeonato = True
-
 while campeonato:
     aparicao = input()
     texto_aparicao = analise_selvagem(aparicao)
@@ -118,59 +122,56 @@ while campeonato:
 
     shiny = False
 
-    # É shiny?
+    # Verifica se é um shiny
     if lista_aux_jogador[-1] == lista_aux_pokemon[-1]:
         shiny = True
 
     fav = False
 
-    # É Pokémon Fav?
+    # Verifica se é o pokémon favorito
     if lista_info[3] == lista_fav[index_aux_2]:
         fav = True
 
     shiny_fav = False
-    # É shiny e fav?
-    if shiny == True and fav == True:
+
+    # Verifica se é um shiny e favorito
+    if shiny and fav:
         shiny_fav = True
 
-    # Pokebolas = lista_qtd[index_aux_2]
-
-    if shiny_fav == True and lista_qtd[index_aux_2] == 1:
+    # Lida com diferentes casos de captura
+    if shiny_fav and lista_qtd[index_aux_2] == 1:
         lista_qtd[index_aux_2] -= 1
         print(f'{jogador_atual}: Que sorte! Não apenas achei meu shiny favorito, como também o capturei em minha última pokébola!!!')
         lista_pokemon[index_aux_2].append(pokemon_atual)
         campeonato = False
-    elif shiny_fav == True and lista_qtd[index_aux_2] >= 1:
+    elif shiny_fav and lista_qtd[index_aux_2] >= 1:
         lista_qtd[index_aux_2] -= 1
         print(f'{jogador_atual}: Consegui capturar um {lista_fav[index_aux_2]} shiny!')
         lista_pokemon[index_aux_2].append(pokemon_atual)
         campeonato = False
-    elif pokemon_atual in lista_pokemon[index_aux_2] and shiny == True and lista_qtd[index_aux_2] >= 1:
+    elif pokemon_atual in lista_pokemon[index_aux_2] and shiny and lista_qtd[index_aux_2] >= 1:
         print(f'{jogador_atual}: Achei um {pokemon_atual} shiny, mas não posso desperdiçar pokébolas em um shiny que já tenho...')
-    elif shiny == True and fav == False and lista_qtd[index_aux_2] >= 1:
+    elif shiny and not fav and lista_qtd[index_aux_2] >= 1:
         lista_qtd[index_aux_2] -= 1
         print(f'{jogador_atual}: Mais um shiny para a coleção, mas ainda não é um {lista_fav[index_aux_2]}')
         lista_pokemon[index_aux_2].append(pokemon_atual)
-    elif fav == True and lista_qtd[index_aux_2] >= 1 and shiny == False:
+    elif fav and lista_qtd[index_aux_2] >= 1 and not shiny:
         lista_qtd[index_aux_2] -= 1
         print(f'{jogador_atual}: Uau, um {lista_fav[index_aux_2]}! Pena que não é um shiny...')
-    elif shiny_fav == True and lista_qtd[index_aux_2] == 0:
+    elif shiny_fav and lista_qtd[index_aux_2] == 0:
         print(f'{jogador_atual}: Só pode ser brincadeira, um {lista_fav[index_aux_2]} shiny logo agora?!')
-    elif shiny == True and fav == False and lista_qtd[index_aux_2] == 0:
+    elif shiny and not fav and lista_qtd[index_aux_2] == 0:
         print(f'{jogador_atual}: Péssimo momento, encontrei um {pokemon_atual} shiny, mas não tenho mais pokébolas!')
-    elif fav == True and lista_qtd[index_aux_2] == 0:
+    elif fav and lista_qtd[index_aux_2] == 0:
         print(f'{jogador_atual}: Desculpa, meu querido {lista_fav[index_aux_2]}, mas não poderei lhe capturar hoje')
-    elif fav == False and shiny == False and lista_qtd[index_aux_2] == 0:
-        print(f'{jogador_atual}: Só um {pokemon_atual} normal?Bom, não é como se eu tivesse pokébolas para capturar algo raro mesmo...')
-    elif fav == False and shiny == False and lista_qtd[index_aux_2] >= 1:
+    elif not fav and not shiny and lista_qtd[index_aux_2] == 0:
+        print(f'{jogador_atual}: Só um {pokemon_atual} normal? Bom, não é como se eu tivesse pokébolas para capturar algo raro mesmo...')
+    elif not fav and not shiny and lista_qtd[index_aux_2] >= 1:
         print(f'{jogador_atual}: Ainda não é um {lista_fav[index_aux_2]} shiny, tenho que continuar procurando...')
 
+# Output exigido pelo desafio
 print(f'\n---Vamos verificar o que todos encontraram!---')
 for i in range(len(lista_nomes)):
-    # if len(lista_pokemon[i]) > 2:
-    #     ultimo_nome = lista_pokemon[i].pop(-1)
-    #     frase_aux = ", ".join(lista_pokemon[i])
-    #     print(f'{lista_nomes[i]} capturou os seguintes shinies: {frase_aux} e {ultimo_nome}')
     if len(lista_pokemon[i]) >= 1:
         frase_aux = ", ".join(lista_pokemon[i])
         print(f'{lista_nomes[i]} capturou os seguintes shinies: {frase_aux}')
